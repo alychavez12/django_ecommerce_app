@@ -19,10 +19,13 @@ from django.urls import path, include
 from core.views import frontpage, about
 
 urlpatterns = [
+    
     path('about/', about, name='about'),
     path("admin/", admin.site.urls),
+    path("accounts/", include("django.contrib.auth.urls")),
     path("", frontpage, name="frontpage"),
     path("", include("store.urls")),
+    path("", include("userprofile.urls")),
 
 
     
