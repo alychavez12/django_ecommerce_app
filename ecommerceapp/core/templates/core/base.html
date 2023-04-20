@@ -17,6 +17,10 @@
         </div>
         <div class="menu flex space-x-4">
           {% menu %}
+           {% if user.is_authenticated %}
+           <a href="{% url 'my_store' %}" class="text-indigo-950">My Store</a>
+           {% endif %}
+           
         </div>
         
     </nav>

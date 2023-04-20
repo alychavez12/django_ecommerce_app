@@ -3,6 +3,9 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
 
 
+def my_store(request):
+    return render(request, 'userprofile/my_store.html')
+
 def signup(request):
     if request.method == 'POST':
         form = UserCreationForm(request.POST)
