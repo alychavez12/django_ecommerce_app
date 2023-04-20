@@ -3,6 +3,11 @@
 {% block title %} {{ product.title }} {% endblock %}
 
 {% block content %}
+{% if product.image %}
+<div class="image mb-6">
+   <img src="{{ product.image.url }}" alt="{{ product.title }}" class="w-48">
+</div>
+   {% endif %}
     <h1 class="text-2xl">{{ product.title }}</h1> 
     <p class="text-xs text-gray-500">
         {{ product.price }}
@@ -14,4 +19,5 @@
     {% if product.description %}
         <p class="mt-4 text-gray-500">{{ product.description }}</p>
     {% endif %}
+
 {% endblock %}
