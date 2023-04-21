@@ -46,7 +46,11 @@ def edit_product(request, pk):
         'title': 'Edit Product',
     })
     
-        
+@login_required
+def delete_product(request, pk):
+    product = Product.objects.filter(user=request.user).get(pk=pk)
+    product.delete()
+    return redirect('my_store')       
 
 
 def signup(request):
