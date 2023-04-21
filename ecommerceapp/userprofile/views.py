@@ -1,8 +1,12 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login
+from django.contrib.auth.decorators import login_required
 
+from store.forms import ProductForm
+from store.models import Product, Category
 
+@login_required
 def my_store(request):
     return render(request, 'userprofile/my_store.html')
 
