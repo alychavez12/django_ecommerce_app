@@ -4,7 +4,7 @@
 
 {% block content %}
  <h1 class="mt-6 text-2xl font-bold">My Store</h1>
- <a href="#" class="mt-6 inline-block bg-yellow-400 hover:bg-yellow-500 text-white font-bold py-2 px-4 rounded">Add Product</a>
+ <a href="{% url 'add_product' %}" class="mt-6 inline-block bg-yellow-400 hover:bg-yellow-500 text-white font-bold py-2 px-4 rounded">Add Product</a>
  <h2 class="mt-6 text-xl font-bold">My Products</h2>
    {% if request.user.products %}
    <div class="flex flex-wrap">
