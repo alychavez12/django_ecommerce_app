@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.utils.text import slugify
 
 from store.forms import ProductForm
+from store.models import Product
 
 
 @login_required
@@ -25,7 +26,27 @@ def add_product(request):
             return redirect('my_store')
     else:
         form = ProductForm()   
-    return render(request, 'userprofile/add_product.html', {'form': form}) 
+    return render(request, 'userprofile/add_product.html', {
+        'form': form,
+        'title': 'Add Product',
+    }) 
+
+@login_required
+def edit_product(request, pk):
+    product = Product.objects.filter(user=request.user).get(pk=pk)
+    if request.method == 'POST':
+        form = ProductForm(request.POST, request.FILES, instance=product)
+        if form.is_valid():
+            form.save()
+            return redirect('my_store')
+    else:
+        form = ProductForm(instance=product)
+    return render(request, 'userprofile/edit_product.html', {
+        'form': form,
+        'title': 'Edit Product',
+    })
+    
+        
 
 
 def signup(request):
