@@ -32,6 +32,10 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+CART_SESSION_ID = "cart"
+SESSION_COOKIE_AGE = 60 * 60 * 24 * 7  # 1 week
+
+LOGIN_URL = "login"
 LOGIN_REDIRECT_URL = "frontpage"
 LOGOUT_REDIRECT_URL = "frontpage"
 

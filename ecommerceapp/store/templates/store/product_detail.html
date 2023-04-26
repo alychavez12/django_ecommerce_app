@@ -19,5 +19,5 @@
     {% if product.description %}
         <p class="mt-4 text-gray-500">{{ product.description }}</p>
     {% endif %}
-
+    <a href="{% url 'add_to_cart' product.id %}" class="btn btn-primary">Add to cart</a>
 {% endblock %}
