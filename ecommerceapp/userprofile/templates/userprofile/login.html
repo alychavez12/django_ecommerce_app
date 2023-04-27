@@ -15,12 +15,12 @@
     <div class="col s12 m6">
         <div class="card">
             <div class="card-content">
-                <span class="card-title">Login</span>
+                <span class="text-2md font-bold">Login</span>
                 <form method="POST" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
                     {% csrf_token %}
                     {{ form.as_p }}
                     <div class="flex items-center justify-between">
-                      <button class="bg-yellow-300 hover:bg-yellow-400 text-navy-blue font-bold py-2 px-4 border border-yellow-400 rounded">
+                      <button class="mt-8 bg-yellow-300 hover:bg-yellow-400 text-navy-blue font-bold py-2 px-3 border border-yellow-400 rounded">
                         Login
                       </button>
                     </div>

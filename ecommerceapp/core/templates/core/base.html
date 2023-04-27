@@ -10,10 +10,10 @@
  </title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <nav class= "max-w-4xl mx-auto py-4 flex items-center justify-between px-6 bg-sky-100">
+<body class="bg-white">
+    <nav class= "max-w-4xl mx-auto py-6 flex items-center justify-between px-6 bg-highlight bg-indigo-950">
         <div class="logo">
-            <a href="/" class="text-indigo-950">E-Commerce</a>
+            <a href="/" class="text-indigo-50">E-Commerce</a>
         </div>
         
         <div class="menu flex space-x-4">
@@ -22,15 +22,15 @@
             
         <div class="menu flex space-x-4">
             {% if user.is_authenticated %}
-             <a href="{% url 'my_store' %}" class="text-indigo-950">My Store</a>
+             <a href="{% url 'my_store' %}" class="text-indigo-50">My Store</a>
              {% endif %}
              
              {% if user.is_authenticated %}
-            <a href="{% url 'logout' %}" class="text-gray-700 menu flex space-x-4">Logout</a>
+            <a href="{% url 'logout' %}" class="text-indigo-50 menu flex space-x-4">Logout</a>
 
             {% else %}
-            <a href="{% url 'login' %}" class="text-gray-700">Login</a>
-            <a href="{% url 'signup' %}" class="text-gray-700">Sign Up</a>  
+            <a href="{% url 'login' %}" class="text-indigo-50">Login</a>
+            <a href="{% url 'signup' %}" class="text-indigo-50">Sign Up</a>  
 
             {% endif %}
         

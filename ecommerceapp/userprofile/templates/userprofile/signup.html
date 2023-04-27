@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block content %}
-<h1>Signup</h1>
+<h1 class="text-2md font-bold mb-4">Signup</h1>
 
 {% if error %}
 <p class="red-text">{{ error }}</p>
@@ -15,7 +15,7 @@
 <form method="POST">
     {% csrf_token %}
     {{ form.as_p }}
-    <button class="bg-yellow-300 hover:bg-yellow-400 text-navy-blue font-bold py-2 px-4 border border-yellow-400 rounded">
+    <button class="mt-8 bg-yellow-300 hover:bg-yellow-400 text-navy-blue font-bold py-2 px-4 border border-yellow-400 rounded">
         SignUp
     </button>
 </form>

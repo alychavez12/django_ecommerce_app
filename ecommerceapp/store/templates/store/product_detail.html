@@ -3,21 +3,33 @@
 {% block title %} {{ product.title }} {% endblock %}
 
 {% block content %}
-{% if product.image %}
-<div class="image mb-6">
+<div class="block rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700 pt-10 px-10">
+ <div class="relative overflow-hidden bg-cover bg-no-repeat"
+ data-te-ripple-init
+ data-te-ripple-color="light">
+    {% if product.image %}
+  <div class="rounded-t-lg">
    <img src="{{ product.image.url }}" alt="{{ product.title }}" class="w-48">
 </div>
+</div>
    {% endif %}
-    <h1 class="text-2xl">{{ product.title }}</h1> 
-    <p class="text-xs text-gray-500">
-        {{ product.price }}
+    <h1 class="mb-2 text-xl font-medium leading-tight text-neutral-800 dark:text-neutral-50">{{ product.title }}</h1> 
+    <p class="text-xs text-gray-500 pt-2 ml-1">
+        ${{ product.price }}
 
         {% comment %} if exist show the name, if not the user  {% endcomment %}
         {% firstof product.user.get_full_name product.user.username %}
     </p>
     
     {% if product.description %}
-        <p class="mt-4 text-gray-500">{{ product.description }}</p>
+        <p class="mb-4 text-base text-neutral-600 dark:text-neutral-200">{{ product.description }}</p>
     {% endif %}
-    <a href="{% url 'add_to_cart' product.id %}" class="btn btn-primary">Add to cart</a>
+    <a href="{% url 'add_to_cart' product.id %}">
+        <span class="inline-block">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="mb-4 w-8 h-8 text-indigo-700 hover:bg-indigo-100">
+                <path fill-rule="evenodd" d="M7.5 6v.75H5.513c-.96 0-1.764.724-1.865 1.679l-1.263 12A1.875 1.875 0 004.25 22.5h15.5a1.875 1.875 0 001.865-2.071l-1.263-12a1.875 1.875 0 00-1.865-1.679H16.5V6a4.5 4.5 0 10-9 0zM12 3a3 3 0 00-3 3v.75h6V6a3 3 0 00-3-3zm-3 8.25a3 3 0 106 0v-.75a.75.75 0 011.5 0v.75a4.5 4.5 0 11-9 0v-.75a.75.75 0 011.5 0v.75z" clip-rule="evenodd" />
+            </svg>
+        </span>
+    </a>
+</div>
 {% endblock %}
