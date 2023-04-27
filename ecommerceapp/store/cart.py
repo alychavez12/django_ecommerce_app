@@ -45,4 +45,11 @@ class Cart(object):
             self.save()
 
     def get_total_cost(self):
-        return sum(item["quantity"] * item["product"].price for item in self.cart.values())
+        total_cost = 0
+        for item in self.cart.values():
+            try:
+                print(item)  
+                total_cost += item["quantity"] * item["product"].price
+            except KeyError:
+                print("KeyError in cart item:", item)
+        return total_cost

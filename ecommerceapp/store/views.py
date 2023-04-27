@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 
-from .models import Category, Product
+from .models import Category, Product, Order, OrderItem
 from .cart import Cart
+from .forms import OrderForm
 
 
 def category_detail(request, slug):
@@ -36,7 +37,7 @@ def change_quantity(request, product_id):
     
     cart = Cart(request)
     cart.add(product_id, quantity, True)
-    print (action)
+    
     return redirect("cart_view")
 
 
@@ -48,9 +49,37 @@ def remove_from_cart(request, product_id):
 
 def cart_view(request):
     cart = Cart(request)
+   
     return render(request, 'store/cart_view.html', {'cart': cart})
 
 @login_required
 def checkout(request):
     cart = Cart(request)
-    return render(request, 'store/checkout.html', {'cart': cart})
+    
+    if request.method == 'POST':
+        form = OrderForm(request.POST)
+        if form.is_valid():
+            order = form.save(commit=False)
+            order.created_by = request.user
+            order.save()
+            for item in cart:
+                OrderItem.objects.create(order=order,
+                                         product=item["product"],
+                                         price=item["product"].price,
+                                         quantity=item["quantity"]),
+            
+                
+            cart = Cart(request)
+            cart.clear()
+
+           
+            return redirect('frontpage')
+    else:
+        form = OrderForm()
+        
+    return render(request, 'store/checkout.html', {
+        'cart': cart,
+        'form': OrderForm(),
+        'total_cost': cart.get_total_cost(),
+        
+    })
