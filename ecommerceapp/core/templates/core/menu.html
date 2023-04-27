@@ -9,5 +9,10 @@
     <a href="{% url 'about' %}" class="text-gray-700">About</a>
 </div>
 
+<div class="menu">
+    <a href="{% url 'cart_view' %}" class="text-gray-700">Cart</a> {{ cart.get_total_items }}
+</div>
+
 
     
+ 

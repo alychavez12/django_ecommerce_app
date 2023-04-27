@@ -6,6 +6,8 @@ from .cart import Cart
 from .forms import OrderForm
 
 
+
+
 def category_detail(request, slug):
     category = Category.objects.get(slug=slug)
     products = category.products.all()
@@ -22,7 +24,7 @@ def product_detail(request, category_slug, slug):
 def add_to_cart(request, product_id):
     cart = Cart(request)
     cart.add(product_id)
-    return redirect("cart_view")
+    return redirect("frontpage")
 
 def change_quantity(request, product_id):
     action = request.GET.get('action', '')
@@ -49,7 +51,6 @@ def remove_from_cart(request, product_id):
 
 def cart_view(request):
     cart = Cart(request)
-   
     return render(request, 'store/cart_view.html', {'cart': cart})
 
 @login_required
@@ -79,7 +80,7 @@ def checkout(request):
         
     return render(request, 'store/checkout.html', {
         'cart': cart,
-        'form': OrderForm(),
-        'total_cost': cart.get_total_cost(),
-        
+        'form': form,   
     })
+
+    

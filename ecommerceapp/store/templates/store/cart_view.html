@@ -34,8 +34,14 @@
     {% endfor %}
 
     <hr class="my-4">
+    <strong>Total Items:</strong> {{ cart.get_total_quantity }}<br>
     <strong>Total Price:</strong> {{ cart.get_total_cost }}
 
     <hr class="my-4">
     <a href="{% url 'checkout' %}" class="mt-4 inline-block bg-yellow-400 hover:bg-yellow-500 text-bluenavy font-bold py-2 px-4 rounded">Checkout</a>
+
+
 {% endblock %}
+
+
+  

@@ -1,24 +1,95 @@
 {% extends "core/base.html" %}
 
-from django import forms
-from store.forms import OrderForm
-
-
-
 {% block title %}Checkout{% endblock %}
 
 {% block content %}
 <div class="flex justify-between">
   <h1 class="mb-6 text-2xl">Checkout</h1>
-  <p class="mb-4">Total: </p> {{ cart.get_total_cost }}
+</div>
+
+<div class="w-1/2">
   <h2 class="mb-4 text-xl">Shipping Details</h2>
    
-  <form method="POST" action=".">
-     {% csrf_token %}
+  <form method="POST" action="." class="space-y-4">
+    {% csrf_token %}
+    <div class="space-y-4">
+      <div class="flex flex-col sm:flex-row sm:space-x-4">
+        <div class="flex-1">
+          {{ form.first_name.label_tag }}
+          {{ form.first_name }}
+        </div>
+        <div class="flex-1">
+          {{ form.last_name.label_tag }}
+          {{ form.last_name }}
+        </div>
+        <div class="flex-1">
+          {{ form.email_address.label_tag }}
+          {{ form.email_address }}
+         </div>
+         <div class="flex-1">
+          {{ form.phone_number.label_tag }}
+          {{ form.phone_number }}
+        </div>
+      </div>
+      <div class="space-y-4">
+        <div class="flex sm:flex-row sm:space-x-4">
+          <div class="flex-1">
+            <label for="{{ form.address.id_for_label }}" class="block text-sm font-medium text-gray-700">Address</label>
+            <div class="mt-1">
+              <input type="text" name="{{ form.address.name }}" id="{{ form.address.id_for_label }}" autocomplete="address-line1" class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+            </div>
+          </div>
 
-     {{ form.as_p }}
+          <div class="flex-1">
+            <label for="{{ form.city.id_for_label }}" class="block text-sm font-medium text-gray-700">City</label>
+            <div class="mt-1">
+              <input type="text" name="{{ form.city.name }}" id="{{ form.city.id_for_label }}" autocomplete="address-level2" class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+            </div>
+          </div>
+
+          <div class="flex-1">
+            <label for="{{ form.zipcode.id_for_label }}" class="block text-sm font-medium text-gray-700">Zipcode</label>
+            <div class="mt-1">
+              <input type="text" name="{{ form.zipcode.name }}" id="{{ form.zipcode.id_for_label }}" autocomplete="postal-code" class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm">
+            </div>
+          </div>
+      </div>
+    </div>
+    <hr class="my-6">
      
-     <button class="mt-4 inline-block bg-yellow-400 hover:bg-yellow-500 text-bluenavy font-bold py-2 px-4 rounded">Checkout</button>
+    <div class="space-y-4">
+      {% if cart %}
+        <p>Your cart has {{ cart|length }} item(s).</p>
+        <ul class="space-y-2">
+          {% for item in cart %}
+            <li>
+              <div class="flex justify-between items-center">
+                <div class="flex-1">
+                  {{ item.product.title }} ({{ item.quantity }})
+                </div>
+                <div class="text-gray-500">
+                  ${{ item.price }}
+                </div>
+              </div>
+            </li>
+          {% endfor %}
+        </ul>
+        <p class="mb-4 font-semibold">Total: ${{ cart.get_total_cost }}</p>
+      {% else %}
+        <p>Your cart is empty.</p>
+      {% endif %}
+    </div>
+     
+    <button class="mt-6 inline-block bg-yellow-400 hover:bg-yellow-500 text-bluenavy font-bold py-2 px-4 rounded">Checkout</button>
   </form>
+  
+  <style>
+    input[type="text"], input[type="email"], input[type="tel"], input[type="number"] {
+      border: 2px solid #E5E7EB;
+      border-radius: 0.25rem;
+      padding: 0.5rem 0.75rem;
+      box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    }
+  </style>
 </div>
 {% endblock %}
