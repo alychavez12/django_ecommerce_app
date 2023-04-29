@@ -1,6 +1,6 @@
 # django-ecommerce-app-by-aly
 
-This is an ecommerce web application built with Django, Python, and SQL. It supports multiple user roles, including customers and vendors, and allows customers to browse and purchase products from various vendors.
+This is an ecommerce web application built with Django, Python, and SQL and tailwind. It supports multiple user roles, including customers and vendors, and allows customers to browse and purchase products from various vendors.
 
 ## Features
 
