@@ -37,6 +37,18 @@ This application was built by Ailenez Chavez 😊
 
 ![ecoomerce](https://user-images.githubusercontent.com/110579112/235280802-ee882a97-a104-4e58-b6f6-ebdb53278388.gif)
 
+## Documentation
+```
+- https://tailwindcss.com/docs/installation/play-cdn
+- https://docs.djangoproject.com/en/4.2/howto/custom-template-tags/
+- https://learndjango.com/tutorials/django-slug-tutorial
+- https://stackoverflow.com/questions/47027356/django-display-all-products-created-by-a-user
+- https://docs.djangoproject.com/en/4.2/ref/templates/builtins/
+- Secret key generator: https://djecrety.ir/
+- https://learndjango.com/tutorials/django-file-and-image-uploads-tutorial
+- https://djangocentral.com/uploading-images-with-django/
+```
+
 ### Future engagements 
 ```
 - Customer account: customers can view their order history, track shipments, and manage their account settings
