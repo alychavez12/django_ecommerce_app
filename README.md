@@ -35,6 +35,8 @@ Run the development server:
 This application was built by Ailenez Chavez 😊
 ```
 
+![ecoomerce](https://user-images.githubusercontent.com/110579112/235280802-ee882a97-a104-4e58-b6f6-ebdb53278388.gif)
+
 ### Future engagements 
 ```
 - Customer account: customers can view their order history, track shipments, and manage their account settings
