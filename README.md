@@ -4,10 +4,11 @@ This is an ecommerce web application built with Django, Python, and SQL. It supp
 
 ## Features
 
-Multi-user support: customers and vendors can create and manage their own accounts
-Vendor dashboard: vendors can manage their inventory, update product details
-Product search:category
-Shopping cart: customers can add products to their cart and checkout
+- Multi-user
+- customers and vendors can create and manage their own accounts
+- Vendor dashboard: vendors can manage their inventory, update product details
+- Product search:category
+- Shopping cart: customers can add products to their cart and checkout
 
 
 ## Instalation
