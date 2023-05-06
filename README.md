@@ -28,7 +28,7 @@ Run the development server:
 
 ## Deployed 
 ```
-- pending
+- https://e-commerce-by-aly.herokuapp.com/
 ```
 
 ## Credits
